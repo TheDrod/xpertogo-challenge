@@ -1,1 +1,102 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$xpertgo-challenge-primary: mat.define-palette(mat.$indigo-palette);
+$xpertgo-challenge-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$xpertgo-challenge-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$xpertgo-challenge-theme: mat.define-light-theme((
+  color: (
+    primary: $xpertgo-challenge-primary,
+    accent: $xpertgo-challenge-accent,
+    warn: $xpertgo-challenge-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($xpertgo-challenge-theme);
+
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+  --app-font-family: "Lexend Deca", sans-serif;
+  font-size: 14px;
+
+  margin: 0;
+}
+
+/* Scroll */
+*::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll-color-500, red);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-color-400, red);
+}
+
+/** Colors **/
+@import "./styles/colors.scss";
+
+body {
+  $colours: ("light-bg-color-500": $light-bg-color-500,
+    "light-bg-color-400": $light-bg-color-400,
+    "light-font-color-500": $light-font-color-500,
+    "light-font-color-400": $light-font-color-400,
+    "light-border-color-500": $light-border-color-500,
+    "light-border-color-400": $light-border-color-400,
+    "dark-bg-color-500": $dark-bg-color-500,
+    "dark-bg-color-400": $dark-bg-color-400,
+    "dark-font-color-500": $dark-font-color-500,
+    "dark-font-color-400": $dark-font-color-400,
+    "dark-border-color-500": $dark-border-color-500,
+    "dark-border-color-400": $dark-border-color-400,
+    "primary-color-500": $primary-color-500,
+    "primary-color-400": $primary-color-400,
+    "scroll-color-500": $scroll-color-500,
+    "scroll-color-400": $scroll-color-400,
+    "primary-color-font-color-500": $primary-color-font-color-500,
+    "primary-color-font-color-400": $primary-color-font-color-400,
+    "color-info": $color-info,
+    "color-danger": $color-danger,
+    "color-warning": $color-warning,
+    "color-success": $color-success,
+  );
+
+  @each $key,
+  $value in $colours {
+    --#{$key}: #{$value};
+  }
+}
+
+/** END COLORS **/
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

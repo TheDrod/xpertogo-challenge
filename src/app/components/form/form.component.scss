@@ -1,0 +1,22 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .datepicker {
+      padding: 0;
+      background-color: unset;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}

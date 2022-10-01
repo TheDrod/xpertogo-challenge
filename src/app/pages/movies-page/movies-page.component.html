@@ -1,0 +1,11 @@
+<div class="movie-page">
+  <app-search-input
+    class="input-wrapper"
+    [searchText]="searchText"
+    (update)="onSearchChanged($event)"
+    (search)="onSearch()"
+  ></app-search-input>
+  <ul class="movies-list">
+    <movie-card *ngFor="let movie of movies" [movie]="movie"></movie-card>
+  </ul>
+</div>

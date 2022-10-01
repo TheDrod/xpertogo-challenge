@@ -1,0 +1,78 @@
+.movie-card {
+  position: relative;
+  // height: 350px;
+  // width: 400px;
+  min-width: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 1rem #000;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 180%;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    transform: skew(45deg);
+    transition: 0.5s;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-1rem);
+    transition: transform 0.4s ease;
+
+    &::before {
+      left: -180%;
+    }
+  }
+
+  .image {
+    // border-radius: var(--game-card-border-radius);
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: var(--url);
+    background-size: cover;
+    filter: grayscale(10%);
+  }
+
+  &:hover .image {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+    transition: transform 0.4s ease;
+  }
+
+  .text-wrapper {
+    background: var(--secondary-bg-600);
+    padding: 10px 1rem;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+
+    >span {
+      color: var(--secondary-font-color-600);
+      // text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+}

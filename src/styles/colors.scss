@@ -1,0 +1,41 @@
+/**
+ * COLORS
+ */
+$light-bg-color-500: hsl(0, 0%, 91%);
+$light-bg-color-400: hsl(0, 0%, 85%);
+$light-bg-500--glass-500: hsl(0, 0%, 91%, 0.66);
+$light-bg-400--glass-500: hsl(0, 0%, 85%, 0.66);
+$light-font-color-500: hsl(0, 0%, 11%);
+$light-font-color-400: hsl(0, 0%, 7%);
+$light-border-color-500: hsl(0, 0%, 20%);
+$light-border-color-400: hsl(0, 0%, 25%);
+
+
+$dark-bg-color-500: hsl(0, 0%, 11%);
+$dark-bg-color-400: hsl(0, 0%, 7%);
+$dark-bg-500--glass-500: hsl(0, 0%, 9%, 0.66);
+$dark-bg-400--glass-500: hsl(0, 0%, 5%, 0.66);
+$dark-font-color-500: hsl(0, 0%, 91%);
+$dark-font-color-400: hsl(0, 0%, 85%);
+$dark-border-color-500: hsl(0, 0%, 20%);
+$dark-border-color-400: hsl(0, 0%, 25%);
+
+
+$primary-color-hue: 0;
+$primary-color-saturation: 100%;
+$primary-color-lightness: 45%;
+$primary-color: hsl(0, 100%, 45%);
+
+$primary-color-500: hsl($primary-color-hue, $primary-color-saturation, $primary-color-lightness);
+$primary-color-400: hsl($primary-color-hue, $primary-color-saturation, calc(#{$primary-color-lightness} - 7%));
+
+$primary-color-font-color-500: hsl(0, 100%, 100%);
+$primary-color-font-color-400: hsl(0, 100%, 90%);
+
+$scroll-color-500: hsl(0, 0%, 60%);
+$scroll-color-400: hsl(0, 0%, 50%);
+
+$color-info: hsl(194, 59%, 54%);
+$color-danger: hsl(2, 80%, 49%);
+$color-warning: hsl(35, 78%, 57%);
+$color-success: hsl(96, 50%, 51%);

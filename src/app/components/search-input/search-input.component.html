@@ -1,0 +1,10 @@
+<form class="search-input">
+  <input
+    type="text"
+    placeholder="Search"
+    name="search"
+    [(ngModel)]="searchText"
+    (change)="onChange()"
+  />
+  <button (click)="onSearch()">Search</button>
+</form>

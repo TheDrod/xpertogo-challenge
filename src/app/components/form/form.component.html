@@ -1,0 +1,94 @@
+<div class="form-container">
+  <pre>{{ formData | json }}</pre>
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+      <mat-form-field appearance="standard">
+        <mat-label>Name</mat-label>
+        <input matInput name="author" [(ngModel)]="formData.author" required />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="formControl.hasError('required')">
+          Name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Title</mat-label>
+        <input matInput name="title" [(ngModel)]="formData.title" required />
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-error *ngIf="formControl.hasError('required')">
+          Title is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-label>Message</mat-label>
+        <textarea
+          matInput
+          name="message"
+          [(ngModel)]="formData.body"
+          required
+        ></textarea>
+        <mat-hint align="end">{{ formData.body.length }} / 256</mat-hint>
+        <mat-error *ngIf="formControl.hasError('required')">
+          Message is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="datepicker">
+        <mat-label>Choose a date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          name="publicationDate"
+          [(ngModel)]="formData.publicationDate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="formControl.hasError('required')">
+          Date is required.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+          [disabled]="!myForm.form.valid"
+        >
+          Submit
+        </button>
+        <button mat-stroked-button class="btn btn-default" (click)="onReset()">
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <span>Title:</span>
+      <span>{{ formData.title }}</span>
+    </div>
+    <br />
+    <div class="row">
+      <span>Name:</span>
+      <span>{{ formData.author }}</span>
+    </div>
+    <br />
+    <div class="row">
+      <span>Message:</span>
+      <span>{{ formData.body }}</span>
+    </div>
+    <br />
+    <div class="row">
+      <span>Name:</span>
+      <span>{{ formData.author }}</span>
+    </div>
+    <br />
+    <button type="button" class="btn btn-primary" (click)="submitted = false">
+      Return
+    </button>
+  </div>
+</div>
