@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormData } from '../../classes/FormData';
 import { FormControl, Validators } from '@angular/forms';
-import { FormBackendService } from 'src/app/services/form-backend/form-backend.service';
+import { FormBackendService } from 'src/app/services/form/form.service';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +13,8 @@ export class FormComponent implements OnInit {
   submitted = false;
   formControl = new FormControl('', [Validators.required]);
 
+  @Output() submit: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private _formService: FormBackendService) { }
 
   ngOnInit(): void {
@@ -20,9 +22,8 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.formData));
-    this._formService.create(this.formData)
-    // this.submitted = true;
+    this._formService.create(this.formData);
+    this.submit.emit();
   }
 
   onReset() {

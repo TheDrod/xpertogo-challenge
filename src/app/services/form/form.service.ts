@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IFormData } from 'src/app/interfaces/IFormData';
+import { FormData } from 'src/app/classes/FormData';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +10,18 @@ export class FormBackendService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<IFormData[]> {
-    return this.http.get<IFormData[]>("https://631b642efae3df4dcffd9e3c.mockapi.io/post");
+  get(): Observable<FormData[]> {
+    return this.http.get<FormData[]>("https://631b642efae3df4dcffd9e3c.mockapi.io/post");
   }
 
-  create(value: IFormData) {
+  create(value: FormData) {
     let fData = { ...value, publicationDate: new Date(value.publicationDate).toISOString() };
     console.log(`FormBackendService ~ create ~ fData`, fData)
 
-    this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
-      .subscribe((response) => {
-        console.log(response);
-      });
+    // this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
+    //   .subscribe((response) => {
+    //     console.log(response);
+    //   });
   }
 
 }

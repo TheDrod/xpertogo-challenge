@@ -1,49 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBackendService } from 'src/app/services/form-backend/form-backend.service';
+import { FormBackendService } from 'src/app/services/form/form.service';
 import { IFormData } from 'src/app/interfaces/IFormData';
+import { FormData } from 'src/app/classes/FormData';
 
 @Component({
   selector: 'app-form-page',
   templateUrl: './form-page.component.html',
-  styleUrls: ['./form-page.component.scss']
+  styleUrls: ['./form-page.component.scss'],
+  host: {
+    class: 'page-container',
+  },
 })
 export class FormPageComponent implements OnInit {
   columns = [
     {
       columnDef: 'id',
       header: 'No.',
-      cell: (element: IFormData) => `${element.id}`,
+      cell: ({ id }: IFormData) => `${id}`,
     },
     {
       columnDef: 'author',
       header: 'Name',
-      cell: (element: IFormData) => `${element.author}`,
+      cell: ({ author }: IFormData) => `${author}`,
     },
     {
       columnDef: 'title',
       header: 'Title',
-      cell: (element: IFormData) => `${element.title}`,
+      cell: ({ title }: IFormData) => `${title}`,
     },
     {
       columnDef: 'body',
       header: 'Message',
-      cell: (element: IFormData) => `${element.body}`,
+      cell: ({ body }: IFormData) => `${body}`,
     },
     {
       columnDef: 'publicationDate',
       header: 'Date',
-      cell: (element: IFormData) => `${element.publicationDate}`,
+      // cell: ({ formatedDate }: FormData) => `${formatedDate()}`,
+      cell: (element: FormData) => (() => {
+        debugger
+        return `${element.formatedDate()}`
+      })(),
     },
   ];
-  dataSource: IFormData[] = [];
+  dataSource: FormData[] = [];
   displayedColumns = this.columns.map(({ columnDef }) => (columnDef));
 
   constructor(private _formService: FormBackendService) { }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this._formService.get()
       .subscribe((response) => {
-        this.dataSource = response;
+        debugger
+        this.dataSource = response.map((entry) => new FormData(entry));
       });
   }
 
