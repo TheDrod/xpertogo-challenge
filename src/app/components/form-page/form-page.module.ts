@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormPageRoutingModule } from './form-page-routing.module';
 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,6 +27,7 @@ import { FormService } from 'src/app/services/form.service';
     CommonModule,
     FormPageRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,

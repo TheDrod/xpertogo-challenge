@@ -26,10 +26,12 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <mat-paginator
+    #paginator
     [length]="dataSource.length"
-    [pageSize]="10"
+    [pageSize]="5"
     [pageSizeOptions]="[5, 10, 20]"
     aria-label="Select page"
+    showFirstLastButtons
   >
   </mat-paginator>
 </div>

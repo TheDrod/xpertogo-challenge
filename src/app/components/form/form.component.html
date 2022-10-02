@@ -1,32 +1,27 @@
-<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="standard">
     <mat-label>Name</mat-label>
-    <input matInput name="author" [(ngModel)]="formData.author" required />
+    <input matInput formControlName="author" />
     <mat-icon matSuffix>person</mat-icon>
-    <mat-error *ngIf="formControl.hasError('required')">
+    <mat-error *ngIf="author.invalid && author.touched">
       Name is required.
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="standard">
     <mat-label>Title</mat-label>
-    <input matInput name="title" [(ngModel)]="formData.title" required />
+    <input matInput formControlName="title" />
     <mat-icon matSuffix>edit</mat-icon>
-    <mat-error *ngIf="formControl.hasError('required')">
+    <mat-error *ngIf="title.invalid && title.touched">
       Title is required.
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="standard">
     <mat-label>Message</mat-label>
-    <textarea
-      matInput
-      name="message"
-      [(ngModel)]="formData.body"
-      required
-    ></textarea>
-    <mat-hint align="end">{{ formData.body.length }} / 256</mat-hint>
-    <mat-error *ngIf="formControl.hasError('required')">
+    <textarea matInput formControlName="body"></textarea>
+    <mat-hint align="end">{{ myForm.value.body.length }} / 256</mat-hint>
+    <mat-error *ngIf="body.invalid && body.touched">
       Message is required.
     </mat-error>
   </mat-form-field>
@@ -36,14 +31,10 @@
     <input
       matInput
       [matDatepicker]="picker"
-      name="publicationDate"
-      [(ngModel)]="formData.publicationDate"
+      formControlName="publicationDate"
     />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="formControl.hasError('required')">
-      Date is required.
-    </mat-error>
   </mat-form-field>
 
   <div class="actions">
@@ -51,15 +42,11 @@
       mat-raised-button
       type="submit"
       color="primary"
-      [disabled]="formControl.status === 'INVALID'"
+      [disabled]="!myForm.valid"
     >
       Submit
     </button>
-    <button
-      mat-stroked-button
-      class="btn btn-default"
-      (click)="onReset();"
-    >
+    <button mat-stroked-button class="btn btn-default" (click)="onReset()">
       Reset
     </button>
   </div>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormData } from '../../classes/FormData';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
 
 @Component({
@@ -10,56 +10,51 @@ import { FormService } from 'src/app/services/form.service';
 })
 export class FormComponent implements OnInit {
   formData!: FormData;
-  formControl = new FormControl('', [Validators.required]);
-
-  @ViewChild(NgForm) myForm!: NgForm;
+  myForm!: FormGroup;
 
   @Output() submit: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private _formService: FormService) { }
+  constructor(private fb: FormBuilder, private _formService: FormService) { }
 
   ngOnInit(): void {
-    this.reset();
-  }
-
-  reset() {
-    this.formData = new FormData({
-      author: '',
-      title: '',
-      body: '',
-      publicationDate: new Date(),
-      // author: 'name',
-      // title: 'Title',
-      // body: 'Message',
-      // publicationDate: new Date(),
+    this.myForm = this.fb.group({
+      author: ['', [Validators.required]],
+      title: ['', [Validators.required]],
+      body: ['', [Validators.required]],
+      publicationDate: [new Date(), [Validators.required]],
     });
   }
 
-  onSubmit() {
-    // if (!this.myForm.valid) {
-    if (this.formControl.status === 'INVALID') {
+  get author(): any {
+    return this.myForm.get('author');
+  }
+  get title(): any {
+    return this.myForm.get('title');
+  }
+  get body(): any {
+    return this.myForm.get('body');
+  }
+
+  async onSubmit() {
+    if (!this.myForm.valid) {
       return;
     }
 
-    this._formService.create(this.formData).then(() => {
+    const formValue = this.myForm.value;
+
+    try {
+      await this._formService.create(formValue);
       this.submit.emit();
       this.onReset();
-    });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   onReset() {
-    this.reset();
-    Object.keys(this.myForm.controls).forEach((key) => {
-      const control = this.myForm.controls[key];
-      control.markAsPristine();
-      control.markAsUntouched();
-    });
-    setTimeout(() => {
-      Object.keys(this.myForm.controls).forEach((key) => {
-        const control = this.myForm.controls[key];
-        control.setErrors(null);
-      });
-    })
+    this.myForm.setValue({ author: '', title: '', body: '', publicationDate: new Date() });
+    this.myForm.markAsPristine();
+    this.myForm.markAsUntouched();
   }
 
 }
