@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormData } from '../classes/FormData';
+import { FormData } from '../../classes/FormData';
 import { FormControl, Validators } from '@angular/forms';
 import { FormBackendService } from 'src/app/services/form-backend/form-backend.service';
 
@@ -27,13 +27,9 @@ export class FormComponent implements OnInit {
 
   onReset() {
     this.formData = new FormData({
-      // author: '',
-      // title: '',
-      // body: '',
-      // publicationDate: new Date(),
-      author: "Pedro Rodrigues",
-      title: "Testing Post",
-      body: "It works!",
+      author: '',
+      title: '',
+      body: '',
       publicationDate: new Date(),
     });
   }

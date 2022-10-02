@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { OMDbApiData } from 'src/app/interfaces/OMDbApiData';
+import { IOMDbApiData, IOMDbApiSearchObject } from 'src/app/interfaces/IOMDbApi';
+
 
 @Injectable()
 export class MovieService {
   constructor(private http: HttpClient) { }
 
-  getMovies(s: string): Observable<OMDbApiData> {
-    return this.http.get<OMDbApiData>(`https://www.omdbapi.com/?s=${s}&apikey=2dba97c6`)
+  getMovies({ s, page }: IOMDbApiSearchObject): Observable<IOMDbApiData> {
+    return this.http.get<IOMDbApiData>(`https://www.omdbapi.com/?s=${s}&page=${page}&plot=short&apikey=2dba97c6`)
   }
 }

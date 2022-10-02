@@ -1,5 +1,6 @@
 export interface IFormData {
-  author: string
+  id?: string,
+  author: string,
   title: string,
   body: string,
   publicationDate: Date | number,

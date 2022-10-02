@@ -15,8 +15,8 @@ export class FormBackendService {
   }
 
   create(value: IFormData) {
-    console.log(value);
     let fData = { ...value, publicationDate: new Date(value.publicationDate).toISOString() };
+    console.log(`FormBackendService ~ create ~ fData`, fData)
 
     this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
       .subscribe((response) => {
