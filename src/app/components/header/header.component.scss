@@ -4,8 +4,37 @@
   justify-content: center;
   align-items: center;
   background-color: var(--dark-bg-color-500);
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   box-sizing: border-box;
+
+  .logo {
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    &__small {}
+
+    &__full {
+      height: 48px;
+      transform: translateX(-32px);
+      width: 0;
+      overflow: hidden;
+    }
+
+    &:hover {
+      .logo__small {
+      }
+
+      .logo__full {
+        height: 48px;
+        width: 100%;
+      }
+
+    }
+  }
 
   .nav-items {
     margin: 0;
@@ -14,5 +43,27 @@
     display: flex;
     gap: 1rem;
     margin-left: auto;
+    font-size: 1.2rem;
+
+    li {
+      color: var(--dark-font-color-500);
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-2px);
+        transition: transform 0.4s ease-in-out;
+        text-decoration: underline;
+
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
+
+      a {
+        all: unset;
+      }
+    }
+
   }
 }

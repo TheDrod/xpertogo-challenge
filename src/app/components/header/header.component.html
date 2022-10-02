@@ -1,22 +1,23 @@
 <div class="app-header">
+  <a class="logo" routerLink="/">
+    <img
+      class="logo__small"
+      src="/assets/icons/logo-xpertgo--small.svg"
+      alt="xpertgo logo"
+    />
+    <img
+      class="logo__full"
+      src="/assets/icons/logo-xpertgo.svg"
+      alt="xpertgo logo"
+    />
+  </a>
+
   <ul class="nav-items">
-    <li>
-      <a
-        routerLink="/movies"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        Movies
-      </a>
+    <li routerLinkActive="active">
+      <a routerLink="/movies"> Movies </a>
     </li>
-    <li>
-      <a
-        routerLink="/form"
-        routerLinkActive="active"
-        ariaCurrentWhenActive="page"
-      >
-        Form
-      </a>
+    <li routerLinkActive="active">
+      <a routerLink="/form"> Form </a>
     </li>
   </ul>
 </div>
