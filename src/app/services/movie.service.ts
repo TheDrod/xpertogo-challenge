@@ -9,6 +9,6 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getMovies({ s, page }: IOMDbApiSearchObject): Observable<IOMDbApiData> {
-    return this.http.get<IOMDbApiData>(`https://www.omdbapi.com/?s=${s}&page=${page}&plot=short&apikey=2dba97c6`)
+    return this.http.get<IOMDbApiData>(`https://www.omdbapi.com/?s=${s}&page=${page}&apikey=2dba97c6`)
   }
 }

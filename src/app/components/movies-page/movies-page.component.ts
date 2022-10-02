@@ -42,14 +42,12 @@ export class MoviesPageComponent implements OnInit {
         this.movies = this.movies.concat(response.Search
           .map((entry: IOMDbApiDataEntry, i) => new Movie({
             title: entry.Title,
-            poster: entry.Poster,
-            genre: entry.Genre,
-            synopse: entry.Plot,
-            director: entry.Director,
-            actors: entry.Actors,
-            rating: entry.imdbRating,
+            poster: entry.Poster !== "N/A"
+              ? entry.Poster
+              : "/assets/images/no_image.png",
             getIndex: i,
-          })));
+          })
+          ));
       });
   }
 

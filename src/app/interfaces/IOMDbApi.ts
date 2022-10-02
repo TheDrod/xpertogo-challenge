@@ -6,11 +6,6 @@ export interface IOMDbApiData {
 export interface IOMDbApiDataEntry {
   Title: string,
   Poster: string,
-  Genre: string,
-  Plot: string,
-  Director: string,
-  Actors: string,
-  imdbRating: string,
 }
 
 export interface IOMDbApiSearchObject {
