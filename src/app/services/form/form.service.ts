@@ -15,13 +15,15 @@ export class FormBackendService {
   }
 
   create(value: FormData) {
-    let fData = { ...value, publicationDate: new Date(value.publicationDate).toISOString() };
-    console.log(`FormBackendService ~ create ~ fData`, fData)
+    return new Promise((resolve) => {
+      let fData = { ...value, publicationDate: new Date(value.publicationDate).toISOString() };
+      console.log(`FormBackendService ~ create ~ fData`, fData)
 
-    // this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
-    //   .subscribe((response) => {
-    //     console.log(response);
-    //   });
+      this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
+        .subscribe((response) => {
+          resolve(response);
+        });
+    })
   }
 
 }

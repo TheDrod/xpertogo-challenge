@@ -18,15 +18,17 @@ export class FormComponent implements OnInit {
   constructor(private _formService: FormBackendService) { }
 
   ngOnInit(): void {
-    this.onReset();
+    this.reset();
   }
 
   onSubmit() {
-    this._formService.create(this.formData);
-    this.submit.emit();
+    this._formService.create(this.formData).then(() => {
+      this.submit.emit();
+      this.reset();
+    });
   }
 
-  onReset() {
+  reset() {
     this.formData = new FormData({
       author: '',
       title: '',
