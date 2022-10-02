@@ -20,6 +20,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -41,10 +45,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     MatButtonModule,
     MatIconModule,
+    MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
     MatFormFieldModule,
+    MatPaginatorModule,
     BrowserAnimationsModule,
   ],
   providers: [
