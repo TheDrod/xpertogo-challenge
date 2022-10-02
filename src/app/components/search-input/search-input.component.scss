@@ -1,0 +1,27 @@
+.search-input {
+  width: 100%;
+  display: flex;
+
+  .input-wrapper {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    padding: 0 0.4rem;
+    flex: 1;
+    height: 40px;
+
+    input {
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    .mat-icon-button {
+      height: 100%;
+      width: unset;
+    }
+  }
+}

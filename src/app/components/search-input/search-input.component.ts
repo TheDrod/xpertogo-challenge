@@ -6,17 +6,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./search-input.component.scss']
 })
 export class SearchInputComponent {
-  @Input() searchText: string = '';
+  @Input() value: string = '';
 
   @Output() update: EventEmitter<string> = new EventEmitter<string>();
   @Output() search: EventEmitter<void> = new EventEmitter<void>();
 
   onChange() {
-    debugger
-    this.update.emit(this.searchText);
+    this.update.emit(this.value);
   }
+
   onSearch() {
-    debugger
     this.search.emit();
   }
+
 }
