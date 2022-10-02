@@ -36,11 +36,7 @@ export class FormPageComponent implements OnInit {
     {
       columnDef: 'publicationDate',
       header: 'Date',
-      // cell: ({ formatedDate }: FormData) => `${formatedDate()}`,
-      cell: (element: FormData) => (() => {
-        debugger
-        return `${element.formatedDate()}`
-      })(),
+      cell: (element: FormData) => `${element.formatedDate()}`,
     },
   ];
   dataSource: FormData[] = [];
@@ -55,7 +51,6 @@ export class FormPageComponent implements OnInit {
   loadData() {
     this._formService.get()
       .subscribe((response) => {
-        debugger
         this.dataSource = response.map((entry) => new FormData(entry));
       });
   }

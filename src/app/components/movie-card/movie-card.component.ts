@@ -7,6 +7,5 @@ import { IMovie } from 'src/app/interfaces/IMovie';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieComponent {
-  @Input()
-  movie!: IMovie;
+  @Input() movie!: IMovie;
 }
