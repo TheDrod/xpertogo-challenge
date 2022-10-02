@@ -13,5 +13,23 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(2rem, 17rem));
     grid-gap: 1rem;
+
+    .animate-card {opacity: 0;
+      animation: animate-card 600ms ease-in forwards;
+      animation-delay: calc(100 * var(--n)* 1ms);
+
+      @keyframes animate-card {
+        from {
+          opacity: 0;
+          transform: translateY(5rem);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+      }
+    }
   }
 }

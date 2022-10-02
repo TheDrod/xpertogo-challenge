@@ -6,4 +6,5 @@ export interface IMovie {
   director?: string,
   actors?: string,
   rating?: string,
+  getIndex?: number,
 }

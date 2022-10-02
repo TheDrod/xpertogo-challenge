@@ -8,6 +8,7 @@ export class Movie {
   public director!: string;
   public actors!: string;
   public rating!: string;
+  public getIndex!: number;
 
   constructor(params: IMovie) {
     Object.assign(this, params);

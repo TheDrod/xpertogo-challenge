@@ -40,7 +40,7 @@ export class MoviesPageComponent implements OnInit {
         }
 
         this.movies = this.movies.concat(response.Search
-          .map((entry: IOMDbApiDataEntry) => new Movie({
+          .map((entry: IOMDbApiDataEntry, i) => new Movie({
             title: entry.Title,
             poster: entry.Poster,
             genre: entry.Genre,
@@ -48,6 +48,7 @@ export class MoviesPageComponent implements OnInit {
             director: entry.Director,
             actors: entry.Actors,
             rating: entry.imdbRating,
+            getIndex: i,
           })));
       });
   }
