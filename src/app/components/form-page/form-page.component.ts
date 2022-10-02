@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormService } from 'src/app/services/form.service';
 import { IFormData } from 'src/app/interfaces/IFormData';
 import { FormData } from 'src/app/classes/FormData';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-form-page',
@@ -36,11 +38,16 @@ export class FormPageComponent implements OnInit {
     {
       columnDef: 'publicationDate',
       header: 'Date',
-      cell: (element: FormData) => `${element.formatedDate()}`,
+      // cell: (element: FormData) => `${element.formatedDate()}`,
+      cell: ({ publicationDate }: FormData) => `${publicationDate}`,
     },
   ];
-  dataSource: FormData[] = [];
   displayedColumns = this.columns.map(({ columnDef }) => (columnDef));
+
+  // dataSource: FormData[] = [];
+  dataSource: any = [];
+
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   constructor(private _formService: FormService) { }
 
@@ -51,7 +58,8 @@ export class FormPageComponent implements OnInit {
   loadData() {
     this._formService.get()
       .subscribe((response) => {
-        this.dataSource = response.map((entry) => new FormData(entry));
+        this.dataSource = new MatTableDataSource(response.map((entry) => new FormData(entry)));
+        this.dataSource.paginator = this.paginator;
       });
   }
 
