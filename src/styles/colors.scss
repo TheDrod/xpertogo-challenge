@@ -24,7 +24,7 @@ $dark-border-color-400: hsl(0, 0%, 25%);
 $primary-color-hue: 0;
 $primary-color-saturation: 100%;
 $primary-color-lightness: 45%;
-$primary-color: hsl(0, 100%, 45%);
+$primary-color: hsl(37, 95%, 56%);
 
 $primary-color-500: hsl($primary-color-hue, $primary-color-saturation, $primary-color-lightness);
 $primary-color-400: hsl($primary-color-hue, $primary-color-saturation, calc(#{$primary-color-lightness} - 7%));

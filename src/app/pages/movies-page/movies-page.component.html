@@ -1,7 +1,7 @@
 <div class="movie-page">
   <app-search-input
     class="input-wrapper"
-    [searchText]="searchText"
+    [value]="searchText"
     (update)="onSearchChanged($event)"
     (search)="onSearch()"
   ></app-search-input>

@@ -50,7 +50,8 @@
   }
 
   .text-wrapper {
-    background: var(--secondary-bg-600);
+    background-color: var(--dark-bg-color-500);
+    color: var(--dark-font-color-500);
     padding: 10px 1rem;
     box-sizing: border-box;
     position: absolute;
