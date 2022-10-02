@@ -2,7 +2,7 @@ import { Injectable, NgModule } from '@angular/core';
 import { RouterModule, RouterStateSnapshot, Routes, TitleStrategy } from '@angular/router';
 
 import { Title } from '@angular/platform-browser';
-// import { PageNotFoundComponent } from './pages/form-page/form-page.component';
+import { FallbackPageComponent } from './components/fallback-page/fallback-page.component';
 
 const routes: Routes = [
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
       import('./components/form-page/form-page.module').then((m) => m.FormPageModule)
   },
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
-  // { path: '**', component: PageNotFoundComponent },
+  { path: '**', component: FallbackPageComponent },
 ];
 
 @Injectable({ providedIn: 'root' })
