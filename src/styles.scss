@@ -7,6 +7,7 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
+
 @import "./styles/colors.scss";
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -38,6 +39,7 @@ body {
   --app-font-family: "Lexend Deca", sans-serif;
   font-size: 14px;
   overflow: overlay;
+  background-color: var(--light-bg-color-400);
 
   margin: 0;
 }
@@ -95,3 +97,14 @@ body {
 }
 
 /** END COLORS **/
+
+.page-container {
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--light-bg-color-500);
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%),
+    0px 3px 14px 2px rgb(0 0 0 / 12%);
+}

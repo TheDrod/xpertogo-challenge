@@ -7,16 +7,18 @@
     /* flex-direction: row; */
     justify-content: center;
     align-items: center;
-    border: 1px solid;
+    border: 1px solid var(--light-border-color-500);
     padding: 0 0.4rem;
     flex: 1;
     height: 40px;
+    background-color: var(--light-bg-color-500);
 
     input {
       border: none;
       outline: none;
       font-size: 1rem;
       flex: 1;
+      background-color: var(--light-bg-color-500);
     }
 
     .mat-icon-button {

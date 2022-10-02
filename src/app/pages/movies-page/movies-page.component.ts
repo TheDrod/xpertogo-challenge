@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { IMovie } from 'src/app/interfaces/IMovie';
-import { OMDbApiDataEntry } from 'src/app/interfaces/OMDbApiData';
+import { Movie } from 'src/app/classes/Movie';
+import { IOMDbApiDataEntry } from 'src/app/interfaces/IOMDbApi';
 import { MovieService } from 'src/app/services/movie/movie.service';
 
 @Component({
   selector: 'app-movies-page',
   templateUrl: './movies-page.component.html',
-  styleUrls: ['./movies-page.component.scss']
+  styleUrls: ['./movies-page.component.scss'],
+  host: {
+    class: 'page-container',
+  },
 })
 export class MoviesPageComponent implements OnInit {
-  movies: IMovie[] = [];
+  movies: Movie[] = [];
+  loading: boolean = false;
   searchText: string = "lord";
+  page = 1;
 
   constructor(private _movieService: MovieService) { }
 
@@ -19,15 +24,29 @@ export class MoviesPageComponent implements OnInit {
   }
 
   getMovies() {
-    this._movieService.getMovies(this.searchText)
+    this.loading = true;
+
+    this._movieService.getMovies({
+      s: this.searchText,
+      page: this.page,
+    })
       .subscribe((response) => {
-        this.movies = response.Search.map((entry: OMDbApiDataEntry) => {
-          // ! change to class
-          return {
+        this.loading = false;
+
+        if (response.Response === "False") {
+          return;
+        }
+
+        this.movies = this.movies.concat(response.Search
+          .map((entry: IOMDbApiDataEntry) => new Movie({
             title: entry.Title,
             poster: entry.Poster,
-          }
-        });
+            genre: entry.Genre,
+            synopse: entry.Plot,
+            director: entry.Director,
+            actors: entry.Actors,
+            rating: entry.imdbRating,
+          })));
       });
   }
 
@@ -35,7 +54,14 @@ export class MoviesPageComponent implements OnInit {
     this.searchText = value;
   }
 
+  onLoadMore() {
+    this.page++;
+    this.getMovies();
+  }
+
   onSearch() {
+    this.movies = [];
+    this.page = 1;
     this.getMovies();
   }
 

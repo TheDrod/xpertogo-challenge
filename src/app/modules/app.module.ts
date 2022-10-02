@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '../app-routing.module';
 
-import { MovieService } from './services/movie/movie.service';
+import { MovieService } from '../services/movie/movie.service';
 
-import { AppComponent } from './app.component';
-import { MoviesPageComponent } from './pages/movies-page/movies-page.component';
-import { FormPageComponent } from './pages/form-page/form-page.component';
-import { HeaderComponent } from './components/header/header.component';
-import { SearchInputComponent } from './components/search-input/search-input.component';
-import { MovieComponent } from './components/movie/movie.component';
-import { FormComponent } from './components/form/form.component';
+import { AppComponent } from '../app.component';
+import { MoviesPageComponent } from '../pages/movies-page/movies-page.component';
+import { FormPageComponent } from '../pages/form-page/form-page.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { SearchInputComponent } from '../components/search-input/search-input.component';
+import { MovieComponent } from '../components/movie-card/movie-card.component';
+import { FormComponent } from '../components/form/form.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
