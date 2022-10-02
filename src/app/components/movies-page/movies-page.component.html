@@ -5,20 +5,26 @@
   (search)="onSearch()"
 ></app-search-input>
 
-<div
-  class="movies-list"
-  infinite-scroll
-  [infiniteScrollDistance]="distance"
-  [infiniteScrollThrottle]="throttle"
-  (scrolled)="onScroll()"
->
-  <movie-card
-    class="animate-card"
-    *ngFor="let movie of movies"
-    [movie]="movie"
-    style="--n: {{ movie.getIndex }}"
-    (click)="router.navigate(['/movies', movie.id])"
-  ></movie-card>
-</div>
+<div *ngIf="movies.length === 0; then falseBlock; else trueBlock"></div>
+<ng-template #trueBlock>
+  <div
+    class="movies-list"
+    infinite-scroll
+    [infiniteScrollDistance]="distance"
+    [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScroll()"
+  >
+    <movie-card
+      class="animate-card"
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      style="--n: {{ movie.getIndex }}"
+      (click)="router.navigate(['/movies', movie.id])"
+    ></movie-card>
+  </div>
+</ng-template>
+<ng-template #falseBlock>
+  <h2>No Data</h2>
+</ng-template>
 
 <mat-spinner *ngIf="loading"></mat-spinner>
