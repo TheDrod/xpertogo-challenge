@@ -38,11 +38,9 @@ export class FormComponent implements OnInit {
   onSubmit() {
     // if (!this.myForm.valid) {
     if (this.formControl.status === 'INVALID') {
-      debugger
       return;
     }
 
-    debugger
     this._formService.create(this.formData).then(() => {
       this.submit.emit();
       this.onReset();
@@ -50,7 +48,6 @@ export class FormComponent implements OnInit {
   }
 
   onReset() {
-    debugger
     this.reset();
     Object.keys(this.myForm.controls).forEach((key) => {
       const control = this.myForm.controls[key];

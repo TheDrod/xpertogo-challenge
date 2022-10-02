@@ -5,10 +5,20 @@
   (search)="onSearch()"
 ></app-search-input>
 
-<ul class="movies-list">
-  <movie-card *ngFor="let movie of movies" [movie]="movie"></movie-card>
-</ul>
+<div
+  class="movies-list"
+  infinite-scroll
+  [infiniteScrollDistance]="distance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScroll()"
+>
+  <movie-card
+    class="animate-card"
+    *ngFor="let movie of movies;"
+    [movie]="movie"
+    style="--n: {{movie.getIndex}}"
+  ></movie-card>
+</div>
 
-<button type="button" class="btn btn-primary" (click)="onLoadMore()">
-  Load More...
-</button>
+<mat-spinner *ngIf="loading"></mat-spinner>
+

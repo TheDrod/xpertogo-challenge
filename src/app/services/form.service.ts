@@ -19,10 +19,10 @@ export class FormService {
       let fData = { ...value, publicationDate: new Date(value.publicationDate).toISOString() };
       console.log(`FormService ~ create ~ fData`, fData)
 
-      // this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
-      //   .subscribe((response) => {
-      //     resolve(response);
-      //   });
+      this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
+        .subscribe((response) => {
+          resolve(response);
+        });
     })
   }
 

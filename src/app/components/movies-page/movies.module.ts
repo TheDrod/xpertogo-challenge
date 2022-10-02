@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 import { MoviesPageComponent } from './movies-page.component';
 import { SearchInputComponent } from '../../components/search-input/search-input.component';
@@ -28,6 +31,8 @@ import { MovieService } from '../../services/movie.service';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    InfiniteScrollModule,
   ],
   providers: [
     MovieService,

@@ -16,6 +16,8 @@ export class MoviesPageComponent implements OnInit {
   loading: boolean = false;
   searchText: string = "lord";
   page = 1;
+  distance = 1;
+  throttle = 500;
 
   constructor(private _movieService: MovieService) { }
 
@@ -54,7 +56,7 @@ export class MoviesPageComponent implements OnInit {
     this.searchText = value;
   }
 
-  onLoadMore() {
+  onScroll() {
     this.page++;
     this.getMovies();
   }
