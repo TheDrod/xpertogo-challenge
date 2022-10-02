@@ -3,6 +3,7 @@ import { RouterModule, RouterStateSnapshot, Routes, TitleStrategy } from '@angul
 
 import { Title } from '@angular/platform-browser';
 import { FallbackPageComponent } from './components/fallback-page/fallback-page.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
     title: 'Movies',
     loadChildren: () =>
       import('./components/movies-page/movies.module').then((m) => m.MoviesPageModule)
+  },
+  {
+    path: 'movies/:id',
+    title: 'Movie Page',
+    component: MovieDetailsComponent
   },
   {
     path: 'form',

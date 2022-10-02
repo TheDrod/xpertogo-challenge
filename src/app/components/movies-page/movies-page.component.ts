@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/classes/Movie';
 import { IOMDbApiDataEntry } from 'src/app/interfaces/IOMDbApi';
 import { MovieService } from 'src/app/services/movie.service';
@@ -19,7 +20,7 @@ export class MoviesPageComponent implements OnInit {
   distance = 1;
   throttle = 500;
 
-  constructor(private _movieService: MovieService) { }
+  constructor(private _movieService: MovieService, public router: Router) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -41,6 +42,7 @@ export class MoviesPageComponent implements OnInit {
 
         this.movies = this.movies.concat(response.Search
           .map((entry: IOMDbApiDataEntry, i) => new Movie({
+            id: entry.imdbID,
             title: entry.Title,
             poster: entry.Poster !== "N/A"
               ? entry.Poster

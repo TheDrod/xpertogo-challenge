@@ -14,11 +14,11 @@
 >
   <movie-card
     class="animate-card"
-    *ngFor="let movie of movies;"
+    *ngFor="let movie of movies"
     [movie]="movie"
-    style="--n: {{movie.getIndex}}"
+    style="--n: {{ movie.getIndex }}"
+    (click)="router.navigate(['/movies', movie.id])"
   ></movie-card>
 </div>
 
 <mat-spinner *ngIf="loading"></mat-spinner>
-

@@ -4,6 +4,7 @@ export interface IOMDbApiData {
 }
 
 export interface IOMDbApiDataEntry {
+  imdbID: string,
   Title: string,
   Poster: string,
 }
