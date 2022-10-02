@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBackendService } from 'src/app/services/form/form.service';
+import { FormService } from 'src/app/services/form.service';
 import { IFormData } from 'src/app/interfaces/IFormData';
 import { FormData } from 'src/app/classes/FormData';
 
@@ -42,7 +42,7 @@ export class FormPageComponent implements OnInit {
   dataSource: FormData[] = [];
   displayedColumns = this.columns.map(({ columnDef }) => (columnDef));
 
-  constructor(private _formService: FormBackendService) { }
+  constructor(private _formService: FormService) { }
 
   ngOnInit(): void {
     this.loadData();

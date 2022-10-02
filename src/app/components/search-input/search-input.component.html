@@ -1,14 +1,11 @@
 <div class="search-input">
-  <div class="input-wrapper">
-    <mat-icon>search</mat-icon>
-    <input
-      matInput
-      type="search"
-      placeholder="Search..."
-      [(ngModel)]="value"
-      (change)="onChange()"
-    />
-  </div>
+  <input
+    matInput
+    type="search"
+    placeholder="Search..."
+    [(ngModel)]="value"
+    (change)="onChange()"
+  />
   <button
     mat-raised-button
     type="submit"

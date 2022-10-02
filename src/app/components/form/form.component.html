@@ -51,11 +51,15 @@
       mat-raised-button
       type="submit"
       color="primary"
-      [disabled]="!myForm.form.valid"
+      [disabled]="formControl.status === 'INVALID'"
     >
       Submit
     </button>
-    <button mat-stroked-button class="btn btn-default" (click)="reset()">
+    <button
+      mat-stroked-button
+      class="btn btn-default"
+      (click)="onReset();"
+    >
       Reset
     </button>
   </div>

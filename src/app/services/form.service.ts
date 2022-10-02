@@ -6,7 +6,7 @@ import { FormData } from 'src/app/classes/FormData';
 @Injectable({
   providedIn: 'root'
 })
-export class FormBackendService {
+export class FormService {
 
   constructor(private http: HttpClient) { }
 
@@ -17,12 +17,12 @@ export class FormBackendService {
   create(value: FormData) {
     return new Promise((resolve) => {
       let fData = { ...value, publicationDate: new Date(value.publicationDate).toISOString() };
-      console.log(`FormBackendService ~ create ~ fData`, fData)
+      console.log(`FormService ~ create ~ fData`, fData)
 
-      this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
-        .subscribe((response) => {
-          resolve(response);
-        });
+      // this.http.post("https://631b642efae3df4dcffd9e3c.mockapi.io/post", fData)
+      //   .subscribe((response) => {
+      //     resolve(response);
+      //   });
     })
   }
 

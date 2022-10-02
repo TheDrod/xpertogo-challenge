@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormData } from '../../classes/FormData';
-import { FormControl, Validators } from '@angular/forms';
-import { FormBackendService } from 'src/app/services/form/form.service';
+import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-form',
@@ -10,22 +10,16 @@ import { FormBackendService } from 'src/app/services/form/form.service';
 })
 export class FormComponent implements OnInit {
   formData!: FormData;
-  submitted = false;
   formControl = new FormControl('', [Validators.required]);
+
+  @ViewChild(NgForm) myForm!: NgForm;
 
   @Output() submit: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private _formService: FormBackendService) { }
+  constructor(private _formService: FormService) { }
 
   ngOnInit(): void {
     this.reset();
-  }
-
-  onSubmit() {
-    this._formService.create(this.formData).then(() => {
-      this.submit.emit();
-      this.reset();
-    });
   }
 
   reset() {
@@ -34,7 +28,41 @@ export class FormComponent implements OnInit {
       title: '',
       body: '',
       publicationDate: new Date(),
+      // author: 'name',
+      // title: 'Title',
+      // body: 'Message',
+      // publicationDate: new Date(),
     });
+  }
+
+  onSubmit() {
+    // if (!this.myForm.valid) {
+    if (this.formControl.status === 'INVALID') {
+      debugger
+      return;
+    }
+
+    debugger
+    this._formService.create(this.formData).then(() => {
+      this.submit.emit();
+      this.onReset();
+    });
+  }
+
+  onReset() {
+    debugger
+    this.reset();
+    Object.keys(this.myForm.controls).forEach((key) => {
+      const control = this.myForm.controls[key];
+      control.markAsPristine();
+      control.markAsUntouched();
+    });
+    setTimeout(() => {
+      Object.keys(this.myForm.controls).forEach((key) => {
+        const control = this.myForm.controls[key];
+        control.setErrors(null);
+      });
+    })
   }
 
 }

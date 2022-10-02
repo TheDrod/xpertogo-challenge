@@ -1,4 +1,4 @@
-.app-header {
+:host {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -19,20 +19,19 @@
 
     &__full {
       height: 48px;
-      transform: translateX(-32px);
       width: 0;
-      overflow: hidden;
+      transform: translateX(-32px);
+      opacity: 0;
+      transition: opacity 0.6s ease;
     }
 
     &:hover {
-      .logo__small {
-      }
+      .logo__small {}
 
       .logo__full {
-        height: 48px;
+        opacity: 1;
         width: 100%;
       }
-
     }
   }
 
