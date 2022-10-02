@@ -1,18 +1,17 @@
-<div class="search-input">
-  <input
-    matInput
-    type="search"
-    placeholder="Search..."
-    [(ngModel)]="value"
-    (change)="onChange()"
-  />
-  <button
-    mat-raised-button
-    type="submit"
-    color="primary"
-    [disabled]="!value.length"
-    (click)="onSearch()"
-  >
-    <mat-icon>search</mat-icon>
-  </button>
-</div>
+<input
+  matInput
+  type="search"
+  [placeholder]="placeholder"
+  [(ngModel)]="value"
+  (change)="onChange()"
+/>
+
+<button
+  mat-raised-button
+  type="submit"
+  color="primary"
+  [disabled]="!value.length"
+  (click)="onSearch()"
+>
+  <mat-icon>search</mat-icon>
+</button>

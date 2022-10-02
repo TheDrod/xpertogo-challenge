@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SearchInputComponent {
   @Input() value: string = '';
+  @Input() placeholder: string = 'Search...';
 
   @Output() update: EventEmitter<string> = new EventEmitter<string>();
   @Output() search: EventEmitter<void> = new EventEmitter<void>();
